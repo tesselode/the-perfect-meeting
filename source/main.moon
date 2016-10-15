@@ -11,9 +11,17 @@ controls =
   down: {'key:down'}
 export input = baton.new controls
 
+export Image = {
+  Logo: lg.newImage 'image/logo.png'
+}
+
 Game = require 'state.game'
 
 love.load = ->
+  with lg
+    .setDefaultFilter 'nearest', 'nearest'
+    .setLineStyle 'rough'
+
   with gamestate
     .switch Game!
     timer.every 1/60, ->

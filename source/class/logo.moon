@@ -52,6 +52,6 @@ class
 
   draw: =>
     lg.setColor 255, 255, 255
-    lg.rectangle 'fill', @x, @y, @w, @h
+    lg.draw Image.Logo, @x, @y
     lg.print tostring @bounceTimer
     lg.print tostring(@bounceType), 0, 16

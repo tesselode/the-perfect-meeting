@@ -17,14 +17,20 @@ love.load = ->
     with logo
       .x += .vx
       .y += .vy
-      .vx = -.vx if .x == 0 or .x + .w == 640
-      .vy = -.vy if .y == 0 or .y + .h == 480
+      .vx = -.vx if .x <= 0 or .x + .w >= 640
+      .vy = -.vy if .y <= 0 or .y + .h >= 480
 
 love.update = (dt) ->
   timer.update dt
 
 love.keypressed = (key) ->
   love.event.quit! if key == 'escape'
+
+  with logo
+    .x -= 4 if key == 'left'
+    .x += 4 if key == 'right'
+    .y -= 4 if key == 'up'
+    .y += 4 if key == 'down'
 
 love.draw = ->
   lg.setColor 255, 255, 255

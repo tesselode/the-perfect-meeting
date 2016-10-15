@@ -31,7 +31,6 @@ class
   registerBounce: (type) =>
     if @bounceType == 'horizontal' and type == 'vertical' or @bounceType == 'vertical' and type == 'horizontal'
       time = bounceTime - @bounceTimer
-      print time
       @bounceType = nil
       @bounceTimer = nil
     else

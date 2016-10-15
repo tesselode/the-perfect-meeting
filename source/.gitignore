@@ -1,2 +1,3 @@
 *.lua
 !lib/*.lua
+!lib/shine/*.lua

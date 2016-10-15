@@ -2,6 +2,7 @@ export lg = love.graphics
 
 export baton = require 'lib.baton'
 export gamestate = require 'lib.gamestate'
+export shine = require 'lib.shine'
 export timer = require 'lib.timer'
 
 controls =
@@ -14,6 +15,21 @@ export input = baton.new controls
 export Image = {
   Logo: lg.newImage 'image/logo.png'
 }
+
+local effect
+
+generateShaders = ->
+  scale = math.min lg.getWidth! / WIDTH, lg.getHeight! / HEIGHT
+
+  glow = shine.glowsimple {sigma: 1}
+  scalines = shine.scanlines {pixel_size: 4 * scale}
+  crt = shine.crt!
+  vignette = shine.vignette {radius: 1.25, softness: 1, opacity: .25}
+  grain = shine.filmgrain {opacity: .2, grainsize: scale}
+
+  effect = glow\chain scalines\chain crt\chain vignette\chain grain
+
+generateShaders!
 
 Game = require 'state.game'
 
@@ -34,9 +50,16 @@ love.update = (dt) ->
 love.keypressed = (key) ->
   love.event.quit! if key == 'escape'
 
+  if key == 'f4'
+    love.window.setFullscreen not love.window.getFullscreen!
+    generateShaders!
+
 love.draw = ->
   with lg
-    .push!
-    .scale math.min .getWidth! / WIDTH, .getHeight! / HEIGHT
-    gamestate.current!\draw!
-    .pop!
+    effect\draw ->
+      .push!
+      scale = math.min .getWidth! / WIDTH, .getHeight! / HEIGHT
+      .translate (.getWidth! - WIDTH * scale) / 2, 0
+      .scale scale
+      gamestate.current!\draw!
+      .pop!

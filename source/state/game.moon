@@ -3,6 +3,7 @@ Logo = require 'class.logo'
 class
   new: =>
     @logo = Logo!
+    Sound.Hum\play!
 
   update: =>
     @logo\update!

@@ -16,6 +16,15 @@ export Image = {
   Logo: lg.newImage 'image/logo.png'
 }
 
+export Font = {
+  VCR: lg.newFont 'font/vcr osd mono.ttf', 42
+}
+
+export Sound = {
+  Hum: with love.audio.newSource 'sound/hum.wav'
+    \setLooping true
+}
+
 local effect
 
 generateShaders = ->

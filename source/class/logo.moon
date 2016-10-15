@@ -1,11 +1,11 @@
-nudgeAmount = 2
-speed = 1
+nudgeAmount = 4
+speed = 2
 bounceTime = 60
 
 class
   new: =>
     @x, @y = WIDTH/2, HEIGHT/2
-    @w, @h = 64, 48
+    @w, @h = 128, 96
     @vx = love.math.random! > .5 and -speed or speed
     @vy = love.math.random! > .5 and -speed or speed
 
@@ -52,5 +52,5 @@ class
   draw: =>
     lg.setColor 255, 255, 255
     lg.draw Image.Logo, @x, @y
-    lg.print tostring @bounceTimer
-    lg.print tostring(@bounceType), 0, 16
+    lg.setFont Font.VCR
+    lg.print 'TEST TEXT'

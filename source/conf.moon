@@ -1,5 +1,5 @@
-export WIDTH = 320
-export HEIGHT = 240
+export WIDTH = 640
+export HEIGHT = 480
 
 love.conf = (t) ->
   with t.window

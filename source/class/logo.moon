@@ -31,6 +31,7 @@ class
   registerBounce: (type) =>
     if @bounceType == 'horizontal' and type == 'vertical' or @bounceType == 'vertical' and type == 'horizontal'
       time = bounceTime - @bounceTimer
+      conversation\say 'corner bounce', time
       @bounceType = nil
       @bounceTimer = nil
     else
@@ -52,5 +53,3 @@ class
   draw: =>
     lg.setColor 255, 255, 255
     lg.draw Image.Logo, @x, @y
-    lg.setFont Font.VCR
-    lg.print 'TEST TEXT'

@@ -3,7 +3,10 @@ export lg = love.graphics
 export baton = require 'lib.baton'
 export gamestate = require 'lib.gamestate'
 export shine = require 'lib.shine'
+export talkback = require 'lib.talkback'
 export timer = require 'lib.timer'
+
+export conversation = talkback.new!
 
 controls =
   left: {'key:left'}

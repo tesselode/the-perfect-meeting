@@ -27,4 +27,8 @@ love.keypressed = (key) ->
   love.event.quit! if key == 'escape'
 
 love.draw = ->
-  gamestate.current!\draw!
+  with lg
+    .push!
+    .scale math.min .getWidth! / WIDTH, .getHeight! / HEIGHT
+    gamestate.current!\draw!
+    .pop!

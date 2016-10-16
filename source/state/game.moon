@@ -19,6 +19,7 @@ class
     @message = ''
     @logo = Logo!
     Sound.Hum\play!
+    Sound.Office\play!
 
   update: =>
     @timer\update 1

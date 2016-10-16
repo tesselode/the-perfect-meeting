@@ -24,7 +24,9 @@ export Font = {
 }
 
 export Sound = {
-  Hum: with love.audio.newSource 'sound/hum.wav'
+  Hum: with love.audio.newSource 'sound/hum.ogg'
+    \setLooping true
+  Office: with love.audio.newSource 'sound/office.ogg'
     \setLooping true
 }
 

@@ -28,6 +28,15 @@ export Sound = {
     \setLooping true
   Office: with love.audio.newSource 'sound/office.ogg'
     \setLooping true
+  BounceBottom: with love.audio.newSource 'sound/bottom.ogg'
+    \setVolume .75
+  BounceSide: with love.audio.newSource 'sound/side.ogg'
+    \setVolume .75
+  BounceTop: with love.audio.newSource 'sound/top.ogg'
+    \setVolume .75
+  Corner: with love.audio.newSource 'sound/corner.ogg'
+    \setVolume .75
+  Impact: love.audio.newSource 'sound/impact.ogg'
 }
 
 local effect

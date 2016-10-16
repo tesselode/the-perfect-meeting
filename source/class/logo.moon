@@ -44,10 +44,15 @@ class
       @x = 0 if @x <= 0
       @x = WIDTH - @w if @x + @w >= WIDTH
       @registerBounce 'horizontal'
+      Sound.BounceSide\clone!\play!
     if @y <= 0 or @y + @h >= HEIGHT
       @vy = -@vy
-      @y = 0 if @y <= 0
-      @y = HEIGHT - @h if @y + @h >= HEIGHT
+      if @y <= 0
+        @y = 0
+        Sound.BounceTop\clone!\play!
+      if @y + @h >= HEIGHT
+        @y = HEIGHT - @h
+        Sound.BounceBottom\clone!\play!
       @registerBounce 'vertical'
 
   draw: =>

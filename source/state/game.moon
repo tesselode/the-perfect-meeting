@@ -5,16 +5,20 @@ class
     @timer = timer.new!
     with @group = conversation\newGroup!
       \listen 'corner bounce', (time) ->
-        @timer\after 20, ->
-          --@message = time..' FRAME DIFFERENCE'
-          @message = ''
-          for i = 1, 0, -1/7
-            if i >= time/60
-              @message ..= '\\'
-            else
-              @message ..= '.'
-          @timer\after 120, ->
+        if time == 0
+          Sound.Impact\clone!\play!
+        else
+          @timer\after 30, ->
+            --@message = time..' FRAME DIFFERENCE'
             @message = ''
+            for i = 1, 0, -1/7
+              if i >= time/60
+                @message ..= '\\'
+              else
+                @message ..= '.'
+            Sound.Corner\clone!\play!
+            @timer\after 120, ->
+              @message = ''
 
     @message = ''
     @logo = Logo!

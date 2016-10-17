@@ -6,20 +6,21 @@ class
 
     @listeners = with conversation\newGroup!
       \listen 'corner bounce', (time) ->
-        if time == 0
-          Sound.Impact\clone!\play!
-        else
+        unless time == 0
           @timer\after 30, ->
-            --@message = time..' FRAME DIFFERENCE'
-            @message = ''
-            for i = 1, 0, -1/7
-              if i >= time/60
-                @message ..= '\\'
-              else
-                @message ..= '.'
-            Sound.Corner\clone!\play!
+            @message = @generateMessage time
+            conversation\say 'show timing indicator'
             @timer\after 120, ->
               @message = ''
+
+  generateMessage: (time) =>
+    message = ''
+    for i = 1, 0, -1/7
+      if i >= time/60
+        message ..= '\\'
+      else
+        message ..= '.'
+    message
 
   update: =>
     @timer\update 1

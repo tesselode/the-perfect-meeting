@@ -3,8 +3,7 @@ class
     @bounceManager = Class.BounceManager!
     @hud = Class.Hud!
     @logo = Class.Logo!
-    Sound.Hum\play!
-    Sound.Office\play!
+    conversation\say 'game start'
 
   update: =>
     @logo\update!

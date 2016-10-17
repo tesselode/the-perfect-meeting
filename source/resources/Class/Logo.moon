@@ -36,17 +36,14 @@ class
       if @x + @w >= WIDTH
         @x = WIDTH - @w
         conversation\say 'bounce', 'right'
-      Sound.BounceSide\clone!\play!
     if @y <= 0 or @y + @h >= HEIGHT
       @vy = -@vy
       if @y <= 0
         @y = 0
         conversation\say 'bounce', 'top'
-        Sound.BounceTop\clone!\play!
       if @y + @h >= HEIGHT
         @y = HEIGHT - @h
         conversation\say 'bounce', 'bottom'
-        Sound.BounceBottom\clone!\play!
 
   draw: =>
     lg.setColor 255, 255, 255

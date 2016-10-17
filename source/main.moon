@@ -16,6 +16,8 @@ love.load = ->
   setmetatable _G, {__index: cargo.init 'resources'}
   Font.VcrMedium = Font.Vcr 41
 
+  SoundManager\init!
+
   with gamestate
     .switch State.Game!
     timer.every 1/60, ->

@@ -1,5 +1,3 @@
-Logo = require 'class.logo'
-
 class
   new: =>
     @timer = timer.new!
@@ -21,7 +19,7 @@ class
               @message = ''
 
     @message = ''
-    @logo = Logo!
+    @logo = Class.Logo!
     Sound.Hum\play!
     Sound.Office\play!
 
@@ -37,7 +35,7 @@ class
       .setColor 0, 0, 255
       .rectangle 'fill', 0, 0, WIDTH, HEIGHT
       .setColor 255, 255, 255
-      .setFont Font.VCR
-      x = WIDTH/2 - Font.VCR\getWidth(@message)/2
+      .setFont Font.VcrMedium
+      x = WIDTH/2 - Font.VcrMedium\getWidth(@message)/2
       .print @message, x, HEIGHT - 84
     @logo\draw!

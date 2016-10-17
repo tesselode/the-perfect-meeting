@@ -6,7 +6,8 @@ class
     @bounceType = nil
 
     with @listeners = conversation\newGroup!
-      \listen 'bounce', (side) -> @registerBounce side
+      \listen 'bounce', (side) ->
+        @registerBounce side unless conversation\say 'get win state'
 
   update: =>
     if @bounceTimer

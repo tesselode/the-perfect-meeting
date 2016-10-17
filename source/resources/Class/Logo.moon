@@ -11,14 +11,15 @@ class
     @bounceTimer = nil
     @bounceType = nil
 
-  update: =>
-    @x += @vx
-    @y += @vy
+  update: (speed = 1) =>
+    @x += @vx * speed
+    @y += @vy * speed
 
-    @x -= nudgeAmount if input\pressed 'left'
-    @x += nudgeAmount if input\pressed 'right'
-    @y -= nudgeAmount if input\pressed 'up'
-    @y += nudgeAmount if input\pressed 'down'
+    unless conversation\say 'get win state'
+      @x -= nudgeAmount if input\pressed 'left'
+      @x += nudgeAmount if input\pressed 'right'
+      @y -= nudgeAmount if input\pressed 'up'
+      @y += nudgeAmount if input\pressed 'down'
 
     if @bounceTimer
       @bounceTimer -= 1

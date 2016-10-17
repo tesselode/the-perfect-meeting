@@ -28,6 +28,8 @@ love.update = (dt) ->
   timer.update dt
 
 love.keypressed = (key) ->
+  with gamestate.current!
+    \keypressed key if .keypressed
   ScreenManager\toggleFullscreen! if key == 'f4'
   love.event.quit! if key == 'escape'
 

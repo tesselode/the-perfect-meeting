@@ -7,6 +7,9 @@
       \listen 'corner bounce', (time) ->
         if time == 0
           Sound.Impact\clone!\play!
+          Sound.Hum\stop!
+          Sound.Office\stop!
+          timer.after 1.5, -> Sound.Dream\play!
       \listen 'show timing indicator', -> Sound.Corner\clone!\play!
       \listen 'bounce', (side) ->
         unless conversation\say 'get win state'

@@ -1,8 +1,9 @@
-export lg = love.graphics
+export lg, lm = love.graphics, love.math
 
 export cargo = require 'lib.cargo'
 export conversation = require('lib.talkback').new!
 export gamestate = require 'lib.gamestate'
+export lume = require 'lib.lume'
 export shine = require 'lib.shine'
 export timer = require 'lib.timer'
 
@@ -13,6 +14,7 @@ love.load = ->
     .setDefaultFilter 'nearest', 'nearest'
     .setLineStyle 'rough'
 
+  -- todo: make the appropriate sounds loop
   setmetatable _G, {__index: cargo.init 'resources'}
   Font.VcrMedium = Font.Vcr 41
 
@@ -33,4 +35,7 @@ love.keypressed = (key) ->
   ScreenManager\toggleFullscreen! if key == 'f4'
   love.event.quit! if key == 'escape'
 
-love.draw = -> ScreenManager\draw -> gamestate.current!\draw!
+love.draw = ->
+  with gamestate.current!
+    \preDraw! if .preDraw
+    ScreenManager\draw -> \draw!

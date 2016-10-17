@@ -23,7 +23,7 @@ love.load = ->
   with gamestate
     .switch State.Game!
     timer.every 1/60, ->
-      input\update!
+      Input\update!
       .current!\update!
 
 love.update = (dt) ->

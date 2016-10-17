@@ -16,10 +16,10 @@ class
     @y += @vy * speed
 
     unless conversation\say 'get win state'
-      @x -= nudgeAmount if input\pressed 'left'
-      @x += nudgeAmount if input\pressed 'right'
-      @y -= nudgeAmount if input\pressed 'up'
-      @y += nudgeAmount if input\pressed 'down'
+      @x -= nudgeAmount if Input\pressed 'left'
+      @x += nudgeAmount if Input\pressed 'right'
+      @y -= nudgeAmount if Input\pressed 'up'
+      @y += nudgeAmount if Input\pressed 'down'
 
     if @bounceTimer
       @bounceTimer -= 1

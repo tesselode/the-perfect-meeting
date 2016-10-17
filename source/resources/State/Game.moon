@@ -1,6 +1,8 @@
 class
   new: =>
     @timer = timer.new!
+    @bounceManager = Class.BounceManager!
+
     with @group = conversation\newGroup!
       \listen 'corner bounce', (time) ->
         if time == 0
@@ -26,8 +28,10 @@ class
   update: =>
     @timer\update 1
     @logo\update!
+    @bounceManager\update!
 
   leave: =>
+    @bounceManager\clear!
     conversation\stopListening @listeners
 
   draw: =>

@@ -1,6 +1,5 @@
 nudgeAmount = 4
 speed = 2
-bounceTime = 60
 
 class
   new: =>
@@ -28,32 +27,26 @@ class
         @bounceType = nil
     @bounce!
 
-  registerBounce: (type) =>
-    if @bounceType == 'horizontal' and type == 'vertical' or @bounceType == 'vertical' and type == 'horizontal'
-      time = bounceTime - @bounceTimer
-      conversation\say 'corner bounce', time
-      @bounceType = nil
-      @bounceTimer = nil
-    else
-      @bounceType = type
-      @bounceTimer = bounceTime
-
   bounce: =>
     if @x <= 0 or @x + @w >= WIDTH
       @vx = -@vx
-      @x = 0 if @x <= 0
-      @x = WIDTH - @w if @x + @w >= WIDTH
-      @registerBounce 'horizontal'
+      if @x <= 0
+        @x = 0
+        conversation\say 'bounce', 'left'
+      if @x + @w >= WIDTH
+        @x = WIDTH - @w
+        conversation\say 'bounce', 'right'
       Sound.BounceSide\clone!\play!
     if @y <= 0 or @y + @h >= HEIGHT
       @vy = -@vy
       if @y <= 0
         @y = 0
+        conversation\say 'bounce', 'top'
         Sound.BounceTop\clone!\play!
       if @y + @h >= HEIGHT
         @y = HEIGHT - @h
+        conversation\say 'bounce', 'bottom'
         Sound.BounceBottom\clone!\play!
-      @registerBounce 'vertical'
 
   draw: =>
     lg.setColor 255, 255, 255

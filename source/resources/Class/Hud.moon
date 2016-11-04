@@ -6,13 +6,16 @@ class
     @topText = -> ''
     @bottomText = -> ''
 
+    @messageTimer = nil
+
     @listeners = with conversation\newGroup!
       \listen 'corner bounce', (time) ->
         unless time == 0
-          @timer\after 30, ->
+          @timer\cancel @messageTimer if @messageTimer
+          @messageTimer = @timer\after 30, ->
             @message = @generateMessage time
             conversation\say 'show timing indicator'
-            @timer\after 120, ->
+            @messageTimer = @timer\after 120, ->
               @message = ''
       \listen 'won', (time) ->
         @timer\after 120, ->

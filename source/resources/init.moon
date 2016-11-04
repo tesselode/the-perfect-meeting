@@ -39,6 +39,8 @@ Sound =
     tags: {Tag.Sfx, Tag.Master}
   Impact: ripple.newSound 'resources/Sound/Impact.ogg',
     tags: {Tag.Sfx, Tag.Master}
+  Button: ripple.newSound 'resources/Sound/Button.ogg',
+    tags: {Tag.Sfx, Tag.Master}
   Hum: ripple.newSound 'resources/Sound/Hum.ogg',
     loop: true
     tags: {Tag.Music, Tag.Master}

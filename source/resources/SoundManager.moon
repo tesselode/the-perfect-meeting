@@ -7,6 +7,12 @@ SoundManager =
     Sound.Office\play!
 
     listeners = with conversation\newGroup!
+      \listen 'navigate menu', ->
+        Sound.Button\stop!
+        Sound.Button\play
+          volume: .25 + .25*love.math.random!
+          pitch: .975 + .05*love.math.random!
+
       \listen 'won', ->
         Sound.Impact\play!
         Sound.Hum\stop!
@@ -27,7 +33,7 @@ SoundManager =
       \listen 'return to title', ->
         timer.cancel dreamMusicTimer if dreamMusicTimer
         timer.cancel dreamMusicTween if dreamMusicTween
-        timer.tween 1, Sound.Dream.volume, {v: 0}, 'linear', ->
+        timer.tween 5, Sound.Dream.volume, {v: 0}, 'out-expo', ->
           Sound.Dream\stop!
         Sound.Hum.volume.v = 0
         Sound.Office.volume.v = 0

@@ -22,9 +22,9 @@ class
           @topText = -> 'TIME: ' .. string.format '%.2f', time
           @bottomText = ->
             if Input\getActiveDevice! == 'joystick'
-              return 'Press A to return to title'
+              return 'PRESS A TO CONTINUE'
             else
-              return 'Press X to return to title'
+              return 'PRESS X TO CONTINUE'
 
   generateMessage: (time) =>
     message = ''

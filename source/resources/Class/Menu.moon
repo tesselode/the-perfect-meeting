@@ -15,12 +15,20 @@ class
     if Input\pressed 'up'
       @selected -= 1
       @selected = #@options if @selected == 0
+      conversation\say 'navigate menu'
     if Input\pressed 'down'
       @selected += 1
       @selected = 1 if @selected > #@options
-    @options[@selected]\decrement! if Input\pressed 'left'
-    @options[@selected]\increment! if Input\pressed 'right'
-    @options[@selected]\select! if Input\pressed 'primary'
+      conversation\say 'navigate menu'
+    if Input\pressed 'left'
+      @options[@selected]\decrement!
+      conversation\say 'navigate menu'
+    if Input\pressed 'right'
+      @options[@selected]\increment!
+      conversation\say 'navigate menu'
+    if Input\pressed 'primary'
+      @options[@selected]\select!
+      conversation\say 'navigate menu'
 
   draw: =>
     lineHeight = lg.getFont!\getHeight 'TEST'

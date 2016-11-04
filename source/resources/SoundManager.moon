@@ -14,13 +14,16 @@ SoundManager =
           pitch: .975 + .05*love.math.random!
 
       \listen 'won', ->
+        timer.cancel dreamMusicTween if dreamMusicTween
         Sound.Impact\play!
         Sound.Hum\stop!
         Sound.Office\stop!
         dreamMusicTimer = timer.after 1.5, ->
           Sound.Dream.volume.v = 0
           dreamMusicTween = timer.tween 5, Sound.Dream.volume, {v: 1}
-          Sound.Dream\play!
+          Sound.Dream\stop!
+          Sound.Dream\play
+            pitch: .8 + .4*love.math.random!
 
       \listen 'show timing indicator', -> Sound.Corner\play!
 
@@ -33,7 +36,7 @@ SoundManager =
       \listen 'return to title', ->
         timer.cancel dreamMusicTimer if dreamMusicTimer
         timer.cancel dreamMusicTween if dreamMusicTween
-        timer.tween 5, Sound.Dream.volume, {v: 0}, 'out-expo', ->
+        dreamMusicTween = timer.tween 5, Sound.Dream.volume, {v: 0}, 'out-expo', ->
           Sound.Dream\stop!
         Sound.Hum.volume.v = 0
         Sound.Office.volume.v = 0

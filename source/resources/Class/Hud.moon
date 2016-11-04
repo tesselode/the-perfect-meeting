@@ -3,6 +3,8 @@ class
     @timer = timer.new!
 
     @message = ''
+    @topText = -> ''
+    @bottomText = -> ''
 
     @listeners = with conversation\newGroup!
       \listen 'corner bounce', (time) ->
@@ -12,6 +14,14 @@ class
             conversation\say 'show timing indicator'
             @timer\after 120, ->
               @message = ''
+      \listen 'won', (time) ->
+        @timer\after 120, ->
+          @topText = -> 'TIME: ' .. string.format '%.2f', time
+          @bottomText = ->
+            if Input\getActiveDevice! == 'joystick'
+              return 'Press A to return to title'
+            else
+              return 'Press X to return to title'
 
   generateMessage: (time) =>
     message = ''
@@ -31,5 +41,7 @@ class
     with lg
       .setColor 255, 255, 255
       .setFont Font.VcrMedium
-      x = WIDTH/2 - Font.VcrMedium\getWidth(@message)/2
-      .print @message, x, HEIGHT - 84
+      .printc @message, WIDTH/2, HEIGHT - 84
+      .setColor 0, 255, 0
+      .printc @topText!, WIDTH/2, 50
+      .printc @bottomText!, WIDTH/2, HEIGHT - 50

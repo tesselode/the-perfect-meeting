@@ -17,6 +17,7 @@ lume = require 'lib.lume'
 ripple = require 'lib.ripple'
 shine = require 'lib.shine'
 timer = require 'lib.timer'
+vector = require 'lib.vector'
 
 Class = cargo.init 'resources/Class'
 Image = cargo.init 'resources/Image'

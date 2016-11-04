@@ -3,9 +3,10 @@ class
     with @menu = Class.Menu HEIGHT/2
       \addOption
         text: => 'GAME A'
-        select: => gamestate.switch State.Game!
+        select: => gamestate.switch State.Game 'a'
       \addOption
         text: => 'GAME B'
+        select: => gamestate.switch State.Game 'b'
       \addOption
         text: => 'OPTIONS'
       \addOption

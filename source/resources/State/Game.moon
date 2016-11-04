@@ -1,12 +1,14 @@
 slomoSpeed = .25
 
 class
-  new: =>
+  new: (gameType) =>
     @bounceManager = Class.BounceManager!
     @hud = Class.Hud!
-    @logo = Class.Logo!
+    @logo = Class.LogoA! if gameType == 'a'
+    @logo = Class.LogoB! if gameType == 'b'
 
     @won = false
+    @time = 0
 
     @listeners = with conversation\newGroup!
       \listen 'get win state', -> @won
@@ -20,6 +22,7 @@ class
   win: =>
     @trippyBackground = Class.TrippyBackground!
     @won = true
+    conversation\say 'won', @time
 
   update: =>
     speed = @won and slomoSpeed or 1
@@ -27,6 +30,13 @@ class
     @logo\update speed
     @hud\update!
     @bounceManager\update!
+
+    if @won
+      if Input\pressed 'primary'
+        conversation\say 'return to title'
+        gamestate.switch State.Title!
+    else
+      @time += 1/60
 
   keypressed: (key) =>
     conversation\say 'corner bounce', 0 if key == 'f9'

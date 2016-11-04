@@ -2,6 +2,10 @@ export *
 
 lg, lm = love.graphics, love.math
 
+lg.printc = (text, x, y) ->
+  x -= lg.getFont!\getWidth(text) / 2
+  lg.print text, x, y
+
 with lg
   .setDefaultFilter 'nearest', 'nearest'
   .setLineStyle 'rough'

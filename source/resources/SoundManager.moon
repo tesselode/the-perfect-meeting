@@ -1,10 +1,9 @@
 SoundManager =
   init: =>
-    listeners = with conversation\newGroup!
-      \listen 'game start', ->
-        Sound.Hum\play!
-        Sound.Office\play!
+    Sound.Hum\play!
+    Sound.Office\play!
 
+    listeners = with conversation\newGroup!
       \listen 'corner bounce', (time) ->
         if time == 0
           Sound.Impact\play!

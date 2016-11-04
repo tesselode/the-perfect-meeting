@@ -2,7 +2,7 @@ love.load = ->
   require 'resources'
 
   with gamestate
-    .switch State.Game!
+    .switch State.Title!
     timer.every 1/60, ->
       Input\update!
       .current!\update!

@@ -1,20 +1,4 @@
-export lg, lm = love.graphics, love.math
-
-export cargo = require 'lib.cargo'
-export conversation = require('lib.talkback').new!
-export gamestate = require 'lib.gamestate'
-export lume = require 'lib.lume'
-export ripple = require 'lib.ripple'
-export shine = require 'lib.shine'
-export timer = require 'lib.timer'
-
-local effect
-
 love.load = ->
-  with lg
-    .setDefaultFilter 'nearest', 'nearest'
-    .setLineStyle 'rough'
-
   require 'resources'
 
   with gamestate

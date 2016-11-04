@@ -1,4 +1,4 @@
-{
+SoundManager =
   init: =>
     listeners = with conversation\newGroup!
       \listen 'game start', ->
@@ -18,4 +18,6 @@
           Sound.BounceBottom\play! if side == 'bottom'
 
   update: (dt) => sound\update dt for _, sound in pairs Sound
-}
+
+SoundManager\init!
+SoundManager

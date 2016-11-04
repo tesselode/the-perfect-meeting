@@ -42,6 +42,7 @@ Sound =
     tags: {Tag.Music, Tag.Master}
   Dream: ripple.newSound 'resources/Sound/Dream.ogg',
     loop: true
+    length: '50s'
     tags: {Tag.Music, Tag.Master}
 Input = require 'resources.Input'
 ScreenManager = require 'resources.ScreenManager'

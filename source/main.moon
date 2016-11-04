@@ -4,6 +4,7 @@ export cargo = require 'lib.cargo'
 export conversation = require('lib.talkback').new!
 export gamestate = require 'lib.gamestate'
 export lume = require 'lib.lume'
+export ripple = require 'lib.ripple'
 export shine = require 'lib.shine'
 export timer = require 'lib.timer'
 
@@ -14,11 +15,7 @@ love.load = ->
     .setDefaultFilter 'nearest', 'nearest'
     .setLineStyle 'rough'
 
-  -- todo: make the appropriate sounds loop
-  setmetatable _G, {__index: cargo.init 'resources'}
-  Font.VcrMedium = Font.Vcr 41
-
-  SoundManager\init!
+  require 'resources'
 
   with gamestate
     .switch State.Game!
@@ -28,6 +25,7 @@ love.load = ->
 
 love.update = (dt) ->
   timer.update dt
+  SoundManager\update dt
 
 love.keypressed = (key) ->
   with gamestate.current!

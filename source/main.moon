@@ -15,7 +15,6 @@ love.keypressed = (key) ->
   with gamestate.current!
     \keypressed key if .keypressed
   ScreenManager\toggleFullscreen! if key == 'f4'
-  love.event.quit! if key == 'escape'
 
 love.draw = ->
   with gamestate.current!

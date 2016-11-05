@@ -21,13 +21,13 @@ class
       @selected = 1 if @selected > #@options
       conversation\say 'navigate menu'
     if Input\pressed 'left'
-      @options[@selected]\decrement!
+      @options[@selected].decrement!
       conversation\say 'navigate menu'
     if Input\pressed 'right'
-      @options[@selected]\increment!
+      @options[@selected].increment!
       conversation\say 'navigate menu'
     if Input\pressed 'primary'
-      @options[@selected]\select!
+      @options[@selected].select!
       conversation\say 'navigate menu'
 
   draw: =>

@@ -24,7 +24,7 @@ class
             if Input\getActiveDevice! == 'joystick'
               return 'PRESS A TO CONTINUE'
             else
-              return 'PRESS X TO CONTINUE'
+              return 'PRESS ENTER TO CONTINUE'
 
   generateMessage: (time) =>
     message = ''

@@ -13,8 +13,8 @@ class
         text: => 'QUIT'
         select: => love.event.quit!
 
-  update: (dt) =>
-    @menu\update dt
+  update: =>
+    @menu\update!
 
   draw: =>
     with lg

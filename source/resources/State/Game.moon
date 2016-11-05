@@ -43,7 +43,7 @@ class
     gamestate.push State.Pause! if not @won and Input\pressed 'pause'
 
   keypressed: (key) =>
-    conversation\say 'corner bounce', 0 if key == 'f9'
+    conversation\say 'corner bounce', 0 if key == 'f9' and DEBUG
 
   leave: =>
     @hud\clear!

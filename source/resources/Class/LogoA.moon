@@ -1,10 +1,10 @@
-nudgeAmount = 4
+nudgeAmount = 3
 speed = 2
 
 class
   new: =>
-    @x, @y = WIDTH/2, HEIGHT/2
     @w, @h = 128, 96
+    @x, @y = love.math.random(WIDTH-@w), love.math.random(HEIGHT-@h)
     @vx = love.math.random! > .5 and -speed or speed
     @vy = love.math.random! > .5 and -speed or speed
 

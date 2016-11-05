@@ -1,5 +1,11 @@
-ScreenManager =
+class ScreenManager
+  new: =>
+    @modes = love.window.getFullscreenModes!
+    table.sort @modes, (a, b) -> a.width*a.height < b.width*b.height
+
   getScale: => math.min lg.getWidth! / WIDTH, lg.getHeight! / HEIGHT
+
+  getResolution: => @modes[@resolution].width, @modes[@resolution].height
 
   updateShaders: =>
     scale = @getScale!
@@ -10,8 +16,9 @@ ScreenManager =
     grain = shine.filmgrain {opacity: .2, grainsize: scale}
     @effect = glow\chain scalines\chain crt\chain vignette\chain grain
 
-  toggleFullscreen: =>
-    love.window.setFullscreen not love.window.getFullscreen!
+  apply: =>
+    w, h = @getResolution!
+    love.window.setMode w, h, {fullscreen: @fullscreen}
     @updateShaders!
 
   draw: (f) =>
@@ -24,6 +31,4 @@ ScreenManager =
         f!
         .pop!
 
-ScreenManager\updateShaders!
-
-ScreenManager
+ScreenManager!

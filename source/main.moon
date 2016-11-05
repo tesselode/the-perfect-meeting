@@ -1,6 +1,8 @@
 love.load = ->
   require 'resources'
 
+  ScreenManager\apply!
+
   with gamestate
     .switch State.Title!
     timer.every 1/60, ->

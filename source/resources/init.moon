@@ -1,6 +1,6 @@
 export *
 
-lg, lm = love.graphics, love.math
+lg, lm, lf = love.graphics, love.math, love.filesystem
 
 lg.printc = (text, x, y) ->
   x -= lg.getFont!\getWidth(text) / 2
@@ -15,6 +15,7 @@ conversation = require('lib.talkback').new!
 gamestate = require 'lib.gamestate'
 lume = require 'lib.lume'
 ripple = require 'lib.ripple'
+serialize = require 'lib.ser'
 shine = require 'lib.shine'
 timer = require 'lib.timer'
 vector = require 'lib.vector'
@@ -22,6 +23,7 @@ vector = require 'lib.vector'
 Class = cargo.init 'resources/Class'
 Image = cargo.init 'resources/Image'
 State = cargo.init 'resources/State'
+Menu = cargo.init 'resources/Menu'
 Font =
   VcrMedium: love.graphics.newFont 'resources/Font/Vcr.ttf', 41
 Tag =
@@ -54,3 +56,5 @@ Sound =
 Input = require 'resources.Input'
 ScreenManager = require 'resources.ScreenManager'
 SoundManager = require 'resources.SoundManager'
+SaveManager = require 'resources.SaveManager'
+ScreenManager\apply!

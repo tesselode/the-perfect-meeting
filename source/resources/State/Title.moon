@@ -1,20 +1,29 @@
 class
   new: =>
+    @generateMenu!
+
+    with @listeners = conversation\newGroup!
+      \listen 'leave options menu', -> @generateMenu!
+
+  generateMenu: =>
     with @menu = Class.Menu HEIGHT/2
       \addOption
-        text: => 'GAME A'
-        select: => gamestate.switch State.Game 'a'
+        text: -> 'GAME A'
+        select: -> gamestate.switch State.Game 'a'
       \addOption
-        text: => 'GAME B'
-        select: => gamestate.switch State.Game 'b'
+        text: -> 'GAME B'
+        select: -> gamestate.switch State.Game 'b'
       \addOption
-        text: => 'OPTIONS'
+        text: -> 'OPTIONS'
+        select: -> @menu = Menu.Options!
       \addOption
-        text: => 'QUIT'
-        select: => love.event.quit!
+        text: -> 'QUIT'
+        select: -> love.event.quit!
 
   update: =>
     @menu\update!
+
+  leave: => conversation\stopListening @listeners
 
   draw: =>
     with lg

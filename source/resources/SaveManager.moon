@@ -6,7 +6,9 @@ class SaveManager
     options = options or {}
     with options
       .resolution = .resolution or #ScreenManager.modes
-      .fullscreen = .fullscreen or true
+      if .resolution > #ScreenManager.modes
+        .resolution = #ScreenManager.modes
+      .fullscreen = true if .fullscreen == nil
       .musicVolume = .musicVolume or 1
       .soundVolume = .soundVolume or 1
       .masterVolume = .masterVolume or 1

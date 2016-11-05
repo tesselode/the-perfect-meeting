@@ -29,9 +29,14 @@ class
     with lg
       .setColor 0, 0, 255
       .rectangle 'fill', 0, 0, WIDTH, HEIGHT
+
       .setFont Font.VcrMedium
+      .setColor 255, 255, 255
+      .printc '/// VAST BOREDOM ///', WIDTH/2, 150
+
       @menu\draw!
 
+      .setColor 255, 255, 255
       if @menu.selected == 1 and SaveManager.records.best.a
         s = 'BEST TIME: ' .. string.format '%.2f', SaveManager.records.best.a
         .printc s, WIDTH/2, 16

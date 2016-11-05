@@ -18,6 +18,17 @@ class SaveManager
       Tag.Sfx.volume.v = .soundVolume
       Tag.Master.volume.v = .masterVolume
 
+    if lf.isFile 'save'
+      @records = lf.load('save')!
+    @records = @records or {best: {}}
+
+    with @listeners = conversation\newGroup!
+      \listen 'won', (time, newBest, gameType) ->
+        best = @records.best[gameType]
+        if not best or time < best
+          @records.best[gameType] = time
+        @save!
+
   save: =>
     options =
       resolution: ScreenManager.resolution
@@ -26,5 +37,6 @@ class SaveManager
       soundVolume: Tag.Sfx.volume.v
       masterVolume: Tag.Master.volume.v
     lf.write 'options', serialize options
+    lf.write 'save', serialize @records
 
 SaveManager!

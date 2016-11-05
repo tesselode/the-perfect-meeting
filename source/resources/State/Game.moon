@@ -1,7 +1,7 @@
 slomoSpeed = .25
 
 class
-  new: (gameType) =>
+  new: (@gameType) =>
     @bounceManager = Class.BounceManager!
     @hud = Class.Hud!
     @logo = Class.LogoA! if gameType == 'a'
@@ -22,7 +22,9 @@ class
   win: =>
     @trippyBackground = Class.TrippyBackground!
     @won = true
-    conversation\say 'won', @time
+    best = SaveManager.records.best[@gameType]
+    newBest = not best or @time < best
+    conversation\say 'won', @time, newBest, @gameType
 
   update: =>
     speed = @won and slomoSpeed or 1

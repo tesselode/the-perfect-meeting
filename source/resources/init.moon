@@ -13,6 +13,7 @@ with lg
 cargo = require 'lib.cargo'
 conversation = require('lib.talkback').new!
 gamestate = require 'lib.gamestate'
+inspect = require 'lib.inspect'
 lume = require 'lib.lume'
 ripple = require 'lib.ripple'
 serialize = require 'lib.ser'

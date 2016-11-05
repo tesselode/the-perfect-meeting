@@ -4,6 +4,7 @@ class
 
     @message = ''
     @topText = -> ''
+    @newBestText = -> ''
     @bottomText = -> ''
 
     @messageTimer = nil
@@ -17,9 +18,11 @@ class
             conversation\say 'show timing indicator'
             @messageTimer = @timer\after 120, ->
               @message = ''
-      \listen 'won', (time) ->
+      \listen 'won', (time, newBest) ->
         @timer\after 120, ->
           @topText = -> 'TIME: ' .. string.format '%.2f', time
+          if newBest
+            @newBestText = -> 'NEW BEST TIME'
           @bottomText = ->
             if Input\getActiveDevice! == 'joystick'
               return 'PRESS A TO CONTINUE'
@@ -48,3 +51,5 @@ class
       .setColor 0, 255, 0
       .printc @topText!, WIDTH/2, 50
       .printc @bottomText!, WIDTH/2, HEIGHT - 50
+      .setColor 0, 255, 255
+      .printc @newBestText!, WIDTH/2, 91

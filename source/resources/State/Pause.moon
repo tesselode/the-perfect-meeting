@@ -1,9 +1,18 @@
 class
   new: =>
+    @generateMenu!
+
+    with @listeners = conversation\newGroup!
+      \listen 'leave options menu', -> @generateMenu!
+
+  generateMenu: =>
     with @menu = Class.Menu HEIGHT/2
       \addOption
         text: -> 'RESUME'
         select: -> @unpause!
+      \addOption
+        text: -> 'OPTIONS'
+        select: -> @menu = Menu.Options!
       \addOption
         text: -> 'BACK TO MENU'
         select: ->
@@ -18,6 +27,8 @@ class
   update: =>
     @menu\update!
     @unpause! if Input\pressed 'pause'
+
+  leave: => conversation\stopListening @listeners
 
   draw: =>
     with lg

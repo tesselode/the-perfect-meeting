@@ -9,6 +9,9 @@ generateVolumeDisplay = (v) ->
 
 ->
   with Class.Menu HEIGHT/2
+    .resolution = ScreenManager.resolution
+    .fullscreen = ScreenManager.fullscreen
+
     \addOption
       text: ->
         w, h = ScreenManager\getResolution!
@@ -54,6 +57,7 @@ generateVolumeDisplay = (v) ->
     \addOption
       text: -> 'BACK'
       select: ->
-        ScreenManager\apply!
+        if ScreenManager.resolution ~= .resolution or ScreenManager.fullscreen ~= .fullscreen
+          ScreenManager\apply!
         SaveManager\save!
         conversation\say 'leave options menu'

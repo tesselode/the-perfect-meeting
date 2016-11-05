@@ -3,7 +3,7 @@ slomoSpeed = .25
 class
   new: (@gameType) =>
     @bounceManager = Class.BounceManager!
-    @hud = Class.Hud!
+    @hud = Class.Hud @gameType
     @logo = Class.LogoA! if gameType == 'a'
     @logo = Class.LogoB! if gameType == 'b'
 

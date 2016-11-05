@@ -6,7 +6,7 @@ class
       \listen 'leave options menu', -> @generateMenu!
 
   generateMenu: =>
-    with @menu = Class.Menu HEIGHT/2
+    with @menu = Class.Menu HEIGHT/2 - 42
       \addOption
         text: -> 'RESUME'
         select: -> @unpause!

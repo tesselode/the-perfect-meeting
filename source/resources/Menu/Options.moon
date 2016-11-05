@@ -8,7 +8,7 @@ generateVolumeDisplay = (v) ->
   str
 
 ->
-  with Class.Menu HEIGHT/2
+  with Class.Menu HEIGHT/2 - 42
     .resolution = ScreenManager.resolution
     .fullscreen = ScreenManager.fullscreen
 

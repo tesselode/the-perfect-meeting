@@ -1,11 +1,24 @@
 class
-  new: =>
+  new: (@gameType) =>
     @timer = timer.new!
 
     @message = ''
     @topText = -> ''
     @newBestText = -> ''
     @bottomText = -> ''
+    if @gameType == 'a'
+      @helpText = ->
+        if Input\getActiveDevice! == 'joystick'
+          return 'USE THE LEFT STICK TO NUDGE THE LOGO'
+        else
+          return 'USE THE ARROW KEYS TO NUDGE THE LOGO'
+    elseif @gameType == 'b'
+      @helpText = ->
+        if Input\getActiveDevice! == 'joystick'
+          return 'USE THE LEFT STICK TO MOVE'
+        else
+          return 'USE THE ARROW KEYS TO MOVE'
+    @timer\after 300, -> @helpText = -> ''
 
     @messageTimer = nil
 
@@ -46,6 +59,8 @@ class
   draw: =>
     with lg
       .setColor 255, 255, 255
+      .setFont Font.VcrSmall
+      .printc @helpText!, WIDTH/2, 92
       .setFont Font.VcrMedium
       .printc @message, WIDTH/2, HEIGHT - 84
       .setColor 0, 255, 0

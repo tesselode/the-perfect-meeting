@@ -32,14 +32,18 @@ class
 
       .setFont Font.VcrMedium
       .setColor 255, 255, 255
-      .printc '/// VAST BOREDOM ///', WIDTH/2, 150
-
-      @menu\draw!
-
-      .setColor 255, 255, 255
+      .printc '/// VAST BOREDOM ///', WIDTH/2, HEIGHT/2 - 84
+      .setFont Font.VcrSmall
+      if Input\getActiveDevice! == 'joystick'
+        .printc 'LEFT STICK - NAVIGATE / A - SELECT', WIDTH/2, HEIGHT-21
+      else
+        .printc '↑↓←→ - NAVIGATE / ENTER - SELECT', WIDTH/2, HEIGHT-21
+      .setFont Font.VcrMedium
       if @menu.selected == 1 and SaveManager.records.best.a
         s = 'BEST TIME: ' .. string.format '%.2f', SaveManager.records.best.a
         .printc s, WIDTH/2, 16
       if @menu.selected == 2 and SaveManager.records.best.b
         s = 'BEST TIME: ' .. string.format '%.2f', SaveManager.records.best.b
         .printc s, WIDTH/2, 16
+
+      @menu\draw!

@@ -46,7 +46,7 @@ State = cargo.init 'resources/State'
 Menu = cargo.init 'resources/Menu'
 Font =
   VcrSmall: love.graphics.newFont 'resources/Font/Vcr.ttf', 21
-  VcrMedium: love.graphics.newFont 'resources/Font/Vcr.ttf', 42
+  VcrMedium: love.graphics.newFont 'resources/Font/Vcr.ttf', 41
 Tag =
   Sfx: ripple.newTag!
   Music: ripple.newTag!

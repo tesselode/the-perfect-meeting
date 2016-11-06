@@ -1,8 +1,10 @@
 export WIDTH = 640
 export HEIGHT = 480
 export DEBUG = false
+export TRAILER = false
 
 love.conf = (t) ->
-  t.identity = 'Vast Boredom'
+  t.identity = 'The Perfect Meeting'
   with t.window
+    .title = 'The Perfect Meeting'
     .fullscreen = true

@@ -2,8 +2,27 @@ export *
 
 lg, lm, lf = love.graphics, love.math, love.filesystem
 
+--oldprint = lg.print
+--lg.print = (text, x, y) ->
+--  color = {lg.getColor!}
+--  lg.setColor 0, 0, 0
+--  oldprint text, x - 2, y - 2
+--  oldprint text, x, y - 2
+--  oldprint text, x + 2, y - 2
+--  oldprint text, x - 2, y
+--  oldprint text, x + 2, y
+--  oldprint text, x - 2, y + 2
+--  oldprint text, x, y + 2
+--  oldprint text, x + 2, y + 2
+--  lg.setColor color
+--  oldprint text, x, y
+
 lg.printc = (text, x, y) ->
   x -= lg.getFont!\getWidth(text) / 2
+  lg.print text, x, y
+
+lg.printr = (text, x, y) ->
+  x -= lg.getFont!\getWidth(text)
   lg.print text, x, y
 
 with lg

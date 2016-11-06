@@ -32,7 +32,7 @@ class
 
       .setFont Font.VcrMedium
       .setColor 255, 255, 255
-      .printc '/// VAST BOREDOM ///', WIDTH/2, HEIGHT/2 - 84
+      .printc '/\\ THE PERFECT MEETING', WIDTH/2, HEIGHT/2 - 84
       .setFont Font.VcrSmall
       if Input\getActiveDevice! == 'joystick'
         .printc 'LEFT STICK - NAVIGATE / A - SELECT', WIDTH/2, HEIGHT-21

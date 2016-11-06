@@ -10,6 +10,8 @@ class
     @won = false
     @time = 0
 
+    @slideshow = Class.Slideshow! if TRAILER
+
     @listeners = with conversation\newGroup!
       \listen 'get win state', -> @won
       \listen 'corner bounce', (time) ->
@@ -43,6 +45,7 @@ class
     gamestate.push State.Pause! if not @won and Input\pressed 'pause'
 
   keypressed: (key) =>
+    @slideshow\keypressed key if TRAILER
     conversation\say 'corner bounce', 0 if key == 'f9' and DEBUG
 
   leave: =>
@@ -65,4 +68,5 @@ class
       .rectangle 'fill', 0, 0, WIDTH, HEIGHT
       .setColor 255, 255, 255
       .draw @logoCanvas
-      @hud\draw!
+      @hud\draw! unless TRAILER
+      @slideshow\draw! if TRAILER

@@ -25,7 +25,7 @@ SoundManager =
           Sound.Dream\play
             pitch: .8 + .4*love.math.random!
 
-      \listen 'show timing indicator', -> Sound.Corner\play!
+      \listen 'show timing indicator', -> Sound.Corner\play! unless TRAILER
 
       \listen 'bounce', (side) ->
         unless conversation\say 'get win state'

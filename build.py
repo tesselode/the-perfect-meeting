@@ -32,8 +32,8 @@ subprocess.call('moonc source')
 # create the love file
 print()
 print('Creating .love file...')
-shutil.make_archive('binaries/logo-bounce', 'zip', 'source')
-os.rename('binaries/logo-bounce.zip', 'binaries/logo-bounce.love')
+shutil.make_archive('binaries/the-perfect-meeting', 'zip', 'source')
+os.rename('binaries/the-perfect-meeting.zip', 'binaries/the-perfect-meeting.love')
 
 # make win32 build
 print()
@@ -42,16 +42,18 @@ urllib.request.urlretrieve('https://bitbucket.org/rude/love/downloads/love-0.10.
 with zipfile.ZipFile('binaries/love-win32.zip', 'r') as z:
     z.extractall('binaries')
 os.remove('binaries/love-win32.zip')
-shutil.copyfile('binaries/logo-bounce.love', 'binaries/love-0.10.2-win32/logo-bounce.love')
+shutil.copyfile('binaries/the-perfect-meeting.love', 'binaries/love-0.10.2-win32/the-perfect-meeting.love')
 with cd('binaries/love-0.10.2-win32'):
-    subprocess.call('copy /b love.exe+logo-bounce.love logo-bounce.exe', shell=True)
+    subprocess.call('copy /b love.exe+the-perfect-meeting.love "The Perfect Meeting.exe"', shell=True)
 os.remove('binaries/love-0.10.2-win32/changes.txt')
 os.remove('binaries/love-0.10.2-win32/game.ico')
-os.remove('binaries/love-0.10.2-win32/logo-bounce.love')
+os.remove('binaries/love-0.10.2-win32/the-perfect-meeting.love')
 os.remove('binaries/love-0.10.2-win32/love.exe')
+os.remove('binaries/love-0.10.2-win32/lovec.exe')
 os.remove('binaries/love-0.10.2-win32/love.ico')
 os.remove('binaries/love-0.10.2-win32/readme.txt')
-os.rename('binaries/love-0.10.2-win32', 'binaries/logo-bounce-win32')
+shutil.copyfile('credits.txt', 'binaries/love-0.10.2-win32/credits.txt')
+os.rename('binaries/love-0.10.2-win32', 'binaries/the-perfect-meeting-win32')
 
 # make win64 build
 print()
@@ -60,26 +62,28 @@ urllib.request.urlretrieve('https://bitbucket.org/rude/love/downloads/love-0.10.
 with zipfile.ZipFile('binaries/love-win64.zip', 'r') as z:
     z.extractall('binaries')
 os.remove('binaries/love-win64.zip')
-shutil.copyfile('binaries/logo-bounce.love', 'binaries/love-0.10.2-win64/logo-bounce.love')
+shutil.copyfile('binaries/the-perfect-meeting.love', 'binaries/love-0.10.2-win64/the-perfect-meeting.love')
 with cd('binaries/love-0.10.2-win64'):
-    subprocess.call('copy /b love.exe+logo-bounce.love logo-bounce.exe', shell=True)
+    subprocess.call('copy /b love.exe+the-perfect-meeting.love "The Perfect Meeting.exe"', shell=True)
 os.remove('binaries/love-0.10.2-win64/changes.txt')
 os.remove('binaries/love-0.10.2-win64/game.ico')
-os.remove('binaries/love-0.10.2-win64/logo-bounce.love')
+os.remove('binaries/love-0.10.2-win64/the-perfect-meeting.love')
 os.remove('binaries/love-0.10.2-win64/love.exe')
+os.remove('binaries/love-0.10.2-win64/lovec.exe')
 os.remove('binaries/love-0.10.2-win64/love.ico')
 os.remove('binaries/love-0.10.2-win64/readme.txt')
-os.rename('binaries/love-0.10.2-win64', 'binaries/logo-bounce-win64')
+shutil.copyfile('credits.txt', 'binaries/love-0.10.2-win64/credits.txt')
+os.rename('binaries/love-0.10.2-win64', 'binaries/the-perfect-meeting-win64')
 
 # upload to itch
 print()
 print('Pushing to Itch...')
-os.makedirs('binaries/logo-bounce-love')
-os.rename('binaries/logo-bounce.love', 'binaries/logo-bounce-love/logo-bounce.love')
+os.makedirs('binaries/the-perfect-meeting-love')
+os.rename('binaries/the-perfect-meeting.love', 'binaries/the-perfect-meeting-love/the-perfect-meeting.love')
 with cd('binaries'):
-    subprocess.call('butler push logo-bounce-win32 tesselode/logo-bounce:win32', shell=True)
-    subprocess.call('butler push logo-bounce-win64 tesselode/logo-bounce:win64', shell=True)
-    subprocess.call('butler push logo-bounce-love tesselode/logo-bounce:love', shell=True)
+    subprocess.call('butler push the-perfect-meeting-win32 tesselode/the-perfect-meeting:win32', shell=True)
+    subprocess.call('butler push the-perfect-meeting-win64 tesselode/the-perfect-meeting:win64', shell=True)
+    subprocess.call('butler push the-perfect-meeting-love tesselode/the-perfect-meeting:love', shell=True)
 
 print()
 input('Build successful! Press enter to exit...')

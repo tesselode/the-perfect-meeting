@@ -41,7 +41,7 @@ SoundManager =
         timer.tween 1, Sound.Hum.volume, {v: 1}
         timer.tween 1, Sound.Office.volume, {v: 1}
 
-  update: => sound\update 1/60 for _, sound in pairs Sound
+  update: (dt) => sound\update dt for _, sound in pairs Sound
 
 SoundManager\init!
 SoundManager

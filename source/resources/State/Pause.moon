@@ -1,5 +1,6 @@
 class
   new: =>
+    conversation\say 'navigate menu'
     @generateMenu!
 
     with @listeners = conversation\newGroup!
@@ -22,7 +23,9 @@ class
 
   enter: (@previous) =>
 
-  unpause: => gamestate.pop!
+  unpause: =>
+    conversation\say 'navigate menu'
+    gamestate.pop!
 
   update: =>
     @menu\update!

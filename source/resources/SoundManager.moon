@@ -22,8 +22,7 @@ SoundManager =
           Sound.Dream.volume.v = 0
           dreamMusicTween = timer.tween 5, Sound.Dream.volume, {v: 1}
           Sound.Dream\stop!
-          Sound.Dream\play
-            pitch: .8 + .4*love.math.random!
+          Sound.Dream\play!
 
       \listen 'show timing indicator', -> Sound.Corner\play! unless TRAILER
 

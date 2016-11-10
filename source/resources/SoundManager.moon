@@ -19,8 +19,7 @@ SoundManager =
         Sound.Hum.volume.v = 0
         Sound.Office.volume.v = 0
         dreamMusicTimer = timer.after 1.5, ->
-          Sound.Dream.volume.v = 0
-          dreamMusicTween = timer.tween 5, Sound.Dream.volume, {v: 1}
+          Sound.Dream.volume.v = 1
           Sound.Dream\stop!
           Sound.Dream\play!
 

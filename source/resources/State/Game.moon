@@ -67,6 +67,15 @@ class
       .setColor 0, 0, 255
       .rectangle 'fill', 0, 0, WIDTH, HEIGHT
       .setColor 255, 255, 255
-      .draw @logoCanvas
-      @hud\draw! unless TRAILER
+      .draw @logoCanvas unless COVER
+      @hud\draw! unless TRAILER or COVER
       @slideshow\draw! if TRAILER
+
+      if COVER
+        .setColor 0, 255, 0
+        .setFont Font.VcrHuge
+        .printc '/\\', WIDTH/2, HEIGHT/2 - 192
+        .setColor 0, 255, 255
+        .setFont Font.VcrBig
+        .printc 'THE PERFECT', WIDTH/2, HEIGHT/2
+        .printc 'MEETING', WIDTH/2, HEIGHT/2 + 84

@@ -47,6 +47,8 @@ Menu = cargo.init 'resources/Menu'
 Font =
   VcrSmall: love.graphics.newFont 'resources/Font/Vcr.ttf', 21
   VcrMedium: love.graphics.newFont 'resources/Font/Vcr.ttf', 41
+  VcrBig: love.graphics.newFont 'resources/Font/Vcr.ttf', 84
+  VcrHuge: love.graphics.newFont 'resources/Font/Vcr.ttf', 192
 Tag =
   Sfx: ripple.newTag!
   Music: ripple.newTag!
